@@ -197,14 +197,14 @@ body {
 .bar-col-center {
   float: left;
   width: 33.33%;
-  text-align: center;
-  padding-top: 50px; }
+  padding: 50px 0px 0px 0px;
+  text-align: center; }
 
 .bar-col-right {
   float: left;
   width: 33.33%;
-  text-align: right;
-  padding: 53px 35px 0px 0px; }
+  padding: 53px 35px 0px 0px;
+  text-align: right; }
 
 .logo {
   height: 87px;
@@ -223,7 +223,8 @@ body {
 .hero {
   min-height: 773px;
   text-align: center;
-  position: relative; }
+  position: relative;
+  margin-bottom: 100px; }
 
 .slider {
   text-align: center; }
@@ -242,7 +243,7 @@ body {
 
 .semiopacity {
   background-color: rgba(35, 35, 35, 0.3);
-  min-height: 773px;
+  min-height: 100%;
   text-align: center; }
 
 .slick-dots {
@@ -292,12 +293,17 @@ body {
   display: inline-block;
   padding: 0 73.5px; }
 
+.main-button:hover {
+  background-color: #ff935e;
+  color: #808369; }
+
 .figure1 {
   background: #fff;
   width: 180px;
   height: 40px;
   border-radius: 50% / 100% 100% 0 0;
   display: inline-block;
+  z-index: 1;
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg); }
 
@@ -313,13 +319,13 @@ body {
   font-size: 0px; }
 
 .figure2 {
-  position: relative;
   background: #fff;
   width: 124px;
   height: 42px;
   border-radius: 50% / 100% 100% 0 0;
   display: inline-block;
   z-index: 1;
+  position: relative;
   text-align: center; }
 
 .symbol {
@@ -327,3 +333,68 @@ body {
   font-size: 19px;
   bottom: -5px;
   left: 43%; }
+
+.section-welcome {
+  min-height: 1026px; }
+
+.row-title {
+  text-align: center;
+  padding-bottom: 100px; }
+
+.title-image {
+  height: 130px;
+  min-width: 273px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  color: #808369;
+  font-weight: bold; }
+
+.title-center {
+  font-size: 35px;
+  color: #434343;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  padding-top: 16px; }
+
+.title-center::after {
+  content: "";
+  display: block;
+  margin: 40px auto 60px auto;
+  background-color: #a7a99a;
+  width: 111px;
+  height: 2px; }
+
+.container {
+  margin: 0 auto;
+  max-width: 1171px; }
+
+.welcome-col {
+  float: left;
+  width: 33.33%;
+  padding: 0px 10px 0px 10px; }
+
+.welcome-img {
+  height: 473px;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: relative; }
+
+.figure3 {
+  background: #fff;
+  width: 85px;
+  height: 33px;
+  border-radius: 50% / 100% 100% 0 0;
+  display: inline-block;
+  z-index: 1; }
+  .figure3 .symbol {
+    left: 47%; }
+
+.welcome-block {
+  padding-bottom: 66px; }
+
+.row-button {
+  text-align: center; }

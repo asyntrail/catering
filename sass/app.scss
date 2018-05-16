@@ -165,25 +165,26 @@ body {
     color: $text-color;
 }
 
-.bar-col-left{
+
+@mixin three-col($col-pad) {
     float: left;
     width: 33.33%;
-    padding: 50px 0px 0px 11px;
+    padding: $col-pad;
 }
 
-.bar-col-center{
-    float: left;
-    width: 33.33%;
-    text-align: center;
-    padding-top: 50px;
+.bar-col-left{
+  @include three-col(50px 0px 0px 11px);
+}
 
+
+.bar-col-center{
+  @include three-col(50px 0px 0px 0px);
+    text-align: center;
 }
 
 .bar-col-right{
-    float: left;
-    width: 33.33%;
+  @include three-col(53px 35px 0px 0px);
     text-align: right;
-    padding: 53px 35px 0px 0px;
 }
 
 .logo{
@@ -206,6 +207,7 @@ body {
     min-height: 773px;
     text-align: center;
     position: relative;
+    margin-bottom: 100px;
 }
 
 .slider{
@@ -230,7 +232,7 @@ body {
 
 .semiopacity{
     background-color: rgba(35, 35, 35, 0.3);
-    min-height: 773px;
+    min-height: 100%;
     text-align: center;
 }
 
@@ -287,12 +289,22 @@ body {
   padding: 0 73.5px;
 }
 
-.figure1{
+.main-button:hover{
+    background-color: #ff935e;
+    color: $text-color;
+}
+
+@mixin half-elipse($width-elipse, $height-elipse){
     background: #fff;
-    width: 180px;
-    height: 40px;
+    width: $width-elipse;
+    height: $height-elipse;
     border-radius: 50% / 100% 100% 0 0;
     display: inline-block;
+    z-index: 1;
+}
+
+.figure1{
+    @include half-elipse(180px,40px);
     transform: rotate(-180deg);
 }
 
@@ -309,15 +321,9 @@ body {
 }
 
 .figure2{
+    @include half-elipse(124px,42px);
     position: relative;
-    background: #fff;
-    width: 124px;
-    height: 42px;
-    border-radius: 50% / 100% 100% 0 0;
-    display: inline-block;
-    z-index: 1;
     text-align: center;
-
 }
 
 .symbol{
@@ -327,3 +333,74 @@ body {
     left: 43%;
 }
 
+.section-welcome{
+  min-height: 1026px;
+}
+
+.row-title{
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.title-image{
+    height: 130px;
+    min-width: 273px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: $text-color;
+    font-weight: bold;
+}
+
+.title-center{
+  font-size: 35px;
+  color: rgb(67, 67, 67);
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.title-center::after{
+   content: "";
+  display: block;
+  margin: 40px auto 60px auto;
+   background-color: rgb(167, 169, 154);
+  width: 111px;
+  height: 2px;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1171px;
+}
+
+
+.welcome-col{
+  @include three-col(0px 10px 0px 10px);
+
+}
+
+.welcome-img{
+    height: 473px;
+    width: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.figure3{
+    @include half-elipse(85px,33px);
+    .symbol {
+    left: 47%;
+}
+}
+
+.welcome-block{
+  padding-bottom: 66px;
+}
+
+.row-button{
+  text-align: center;
+}
