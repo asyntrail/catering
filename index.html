@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Catering</title>
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
@@ -14,6 +14,25 @@
 </head>
 
 <body>
+    <!-- begin sidebar menu -->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">pages</a></li>
+            <li><a href="#">services</a></li>
+            <li><a href="#">menu</a></li>
+            <li><a href="#">gallery</a></li>
+            <li><a href="#">blog</a></li>
+            <li><a href="#">contacts</a></li>
+        </ul>
+    </div>
+    <!-- end sidebar menu-->
     <!-- begin page -->
     <div class="page">
         <!-- begin header -->
@@ -53,16 +72,22 @@
                     <!-- begin clearfix -->
                     <div class="clearfix">
                         <!-- begin bar-col -->
-                        <div class="bar-col-left">
-                            <p>
+                        <div class="bar-col left-bar">
                                 <a class="top-bar-link" href="#" title="Phone"><span class="icon-phone"></span>123-456-7890 </a>
                                 <br>
                                 <a class="top-bar-link" href="#" title="Email Address">INFO@YOURSITE.COM</a>
-                            </p>
                         </div>
                         <!-- end bar-col -->
                         <!-- begin bar-col -->
-                        <div class="bar-col-center">
+                        <div class="bar-col addition-bar">
+                                <a class="top-bar-link" href="#"><span class="icon-shopping-cart"></span>YOUR CART:
+                            <br>
+                            0 ITEMS - $0.00
+                            </a>
+                        </div>
+                        <!-- end bar-col -->
+                        <!-- begin bar-col -->
+                        <div class="bar-col center-bar">
                             <!-- begin logo -->
                             <div class="logo" style="background-image:url(img/logo.png)">
                             </div>
@@ -70,8 +95,7 @@
                         </div>
                         <!-- end bar-col -->
                         <!-- begin bar-col -->
-                        <div class="bar-col-right">
-                            <p>
+                        <div class="bar-col right-bar">
                                 <a class="top-bar-link" href="#"><span class="icon-shopping-cart"></span>YOUR CART:
                             <br>
                             0 ITEMS - $0.00
@@ -202,8 +226,8 @@
             <!-- end container -->
         </div>
         <!-- end section-welcome -->
-        <!-- begin section about-us -->
-        <div class="section about-us">
+        <!-- begin section-about -->
+        <div class="section-about">
             <!-- begin about-banner -->
             <div class="about-banner background-img" style="background-image: url(img/aboutbg.jpg)">
                 <!-- begin semiopacity -->
@@ -255,7 +279,7 @@
             </div>
             <!-- end about-banner -->
         </div>
-        <!-- end section about-us -->
+        <!-- end section-about -->
         <!-- begin section-menu -->
         <div class="section-menu background-img" style="background-image: url(img/bgmenu.jpg)">
             <!-- begin section-menu-content -->
@@ -616,8 +640,8 @@
             <!-- end row-button -->
         </div>
         <!-- end section-blog -->
-        <!-- begin section chef -->
-        <div class="section chef">
+        <!-- begin section-chef -->
+        <div class="section-chef">
             <!-- begin chef-banner -->
             <div class="chef-banner background-img" style="background-image: url(img/s3.jpg)">
                 <!-- begin semiopacity -->
@@ -668,7 +692,7 @@
             </div>
             <!-- end chef-banner -->
         </div>
-        <!-- end section chef -->
+        <!-- end section-chef -->
         <!-- begin section-staff -->
         <div class="section-staff background-img" style="background-image: url(img/bgmenu.jpg)">
             <!-- begin row-title -->
@@ -688,7 +712,7 @@
                         <div class="staff-col">
                             <!-- begin staff-content -->
                             <div class="staff-content">
-                                <div class="staff-img background-img" style="background-image: url(img/cheh_photo.jpg)">
+                                <div class="staff-img background-img" style="background-image: url(img/st1.jpg)">
                                 </div>
                                 <p class="staff-name">Amanda Finch</p>
                                 <p class="staff-position">Chef Co</p>
@@ -699,7 +723,7 @@
                         <div class="staff-col">
                             <!-- begin staff-content -->
                             <div class="staff-content">
-                                <div class="staff-img background-img" style="background-image: url(img/ev1.jpg)">
+                                <div class="staff-img background-img" style="background-image: url(img/st2.jpg)">
                                 </div>
                                 <p class="staff-name">Joseph Verder</p>
                                 <p class="staff-position">Chef</p>
@@ -710,7 +734,7 @@
                         <div class="staff-col">
                             <!-- begin staff-content -->
                             <div class="staff-content">
-                                <div class="staff-img background-img" style="background-image: url(img/cheh_photo.jpg)">
+                                <div class="staff-img background-img" style="background-image: url(img/st3.jpg)">
                                 </div>
                                 <p class="staff-name">Anthony Mann</p>
                                 <p class="staff-position">Waiter</p>
@@ -721,7 +745,7 @@
                         <div class="staff-col">
                             <!-- begin staff-content -->
                             <div class="staff-content">
-                                <div class="staff-img background-img" style="background-image: url(img/ev1.jpg)">
+                                <div class="staff-img background-img" style="background-image: url(img/st4.jpg)">
                                 </div>
                                 <p class="staff-name">Julia Green</p>
                                 <p class="staff-position">Waitress</p>
@@ -884,6 +908,7 @@
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script type="text/javascript" src="js/slick-setting.js"></script>
+    <script type="text/javascript" src="js/collapse.js"></script>
 </body>
 
 </html>
