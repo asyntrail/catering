@@ -15,12 +15,12 @@
 </head>
 
 <body>
+    <!-- BEGIN sidebar -->
     {% include "layouts/_sidebar.html" %}
-    <!-- BEGIN content -->
-    <div class="out">
-        {% block content %}{% endblock %}
-    </div>
-    <!-- END content -->
+    <!-- END sidebar -->
+    <!-- BEGIN page -->
+    {% block content %}{% endblock %}
+    <!-- END page -->
 
     <!-- BEGIN scripts -->
     <script type="text/javascript" src="js/app.js"></script>

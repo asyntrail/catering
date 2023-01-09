@@ -1,7 +1,7 @@
 $main-color: #808369
 $active-color: #b6cc0b
 $nav-color: #f2f1ec
-$text-color: #808369
+$text-main: #808369
 $text-second: rgb(146, 146, 146)
 
 *
@@ -51,7 +51,8 @@ h3,h4,p
   position: fixed
   width: 200px
   height: 100%
-  background: #151719
+  background: $main-color
+  text-align: center
   right: -200px
   -webkit-transition: all 500ms linear
   transition: all 500ms linear
@@ -59,7 +60,8 @@ h3,h4,p
 
 #sidebar.active
   right: 0px
-  // overflow: auto
+  +rmin(733)
+     display: none
 
 #sidebar ul
   list-style: none
@@ -80,6 +82,7 @@ h3,h4,p
   position: absolute
   right: 230px
   top: 10px
+  cursor: pointer
   +rmin(733)
      display: none
 
@@ -87,11 +90,14 @@ h3,h4,p
   display: block
   width: 30px
   height: 5px
-  background: $main-color
+  background: $active-color
   margin: 5px 0px
 
 .icon-chevron-down:before
   content: "\e907"
+  font-size: 19px
+
+
 
 .icon-instagram:before
   content: "\e902"
@@ -115,20 +121,12 @@ h3,h4,p
 
 .icon-home:before
   content: "\e906"
-  color: $text-color
+  color: $text-main
 
 .home-button
   float: left
   padding: 0px 26px 0px 26px
 
-.icons
-  color: $text-color
-  text-decoration: none
-  font-size: 14px
-  padding: 0px
-
-.icons:hover
-  color: red
 
 body
   margin: 0px 0px
@@ -138,72 +136,82 @@ body
   margin: 0px auto
   width: 95%
 
-.header-menu
+.header__top-wrap
   background: $nav-color
   min-height: 56px
   text-align: center
+  display: flex
 
-.menu-wrap
+.header__nav
   display: inline-block
-  padding: 20px 20px 0px 20px
+  width: 100%
+  padding: 20px 0px 
+  +r(733)
+      display: none
+  a
+    text-transform: uppercase
+    border-left: 1px solid $text-main
+    display: inline-block
+    text-decoration: none
+    color: $text-main
+    font-weight: bold
+    padding: 0px 27px 0px 25px
+    font-size: 14px
+    line-height: 1.2
+    &:hover
+      color: $active-color
+    +r(970)
+      padding: 0px 10px 0px 10px
+  .header__icon
+    font-weight: normal
+    border-left: none
+  
+  
 
-.nav-menu
-  float: left
-  ul
-    list-style: none
-    overflow: hidden
-    padding: 0
-    margin: 0
+.icon-home
+  text-decoration: none
+  padding: 0px
+  &:hover:before
+    color: $active-color
 
-    li
-      float: left
-      border-left: 1px solid $text-color
-    a
-      text-transform: uppercase
-      display: block
-      text-decoration: none
-      color: $text-color
-      font-weight: bold
-      padding: 0px 27px 0px 25px
-      font-size: 14px
-      line-height: 1.2
-
-.nav-menu li a:hover
-  color: #b6cc0b
-
-.top-bar
+.header__bottom-wrap
   min-height: 150px
-
-.top-bar-wrap
-  width: 75%
+  // width: 75%
   margin: 0 auto
-  min-height: 150px
-  color: $text-color
+  display: flex
+  justify-content: space-evenly
+  +r(670)
+    flex-direction: column
+    align-items: center
 
 @mixin three-col($col-pad)
-  float: left
+  // float: left
   width: 33.33%
   padding: $col-pad
 
-.bar-col
-  @include three-col(0px)
-
-.left-bar
+.header__col_left
   text-align: left
-  padding: 50px 0px 0px 35px
+  padding: 50px 0px 0px 0px
+  order: 1
+  max-width: 158px
+  +r(670)
+    text-align: center
 
-.center-bar
+.header__col_center
   padding: 50px 0px 0px 0px
   text-align: center
+  order: 2
+  +r(670)
+   order: 3
 
-.right-bar
-  padding: 53px 35px 0px 0px
-  text-align: right
-
-.addition-bar
-  display: none
-  padding: 53px 35px 0px 0px
-  text-align: right
+.header__col_right
+  padding: 53px 0px 0px 0px
+  text-align: left
+  min-width: 150px
+  order: 3
+  +r(670)
+    order: 2
+    text-align: center
 
 .logo
   height: 87px
@@ -213,45 +221,47 @@ body
   background-position: center
   display: inline-block
 
-.top-bar-link
+.header__link
   text-decoration: none
-  color: $text-color
+  color: $text-main
   font-size: 14px
   font-weight: bold
 
+a.header__link:hover
+  color: $active-color
+
 .hero
-  min-height: 773px
+  min-height: 600px
   position: relative
   margin-bottom: 100px
-
-
-
 
 @mixin bg-setting($height-img, $width-img)
   height: $height-img
   width: $width-img
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
 
 
 // slider start
-
-/* Slideshow container */
-
 .slider 
   position: relative
   margin: auto
+
 /* Hide the images by default */
 
-.mySlides 
-    display: none
+.slider__slides 
+  display: none
 
 .semiopacity
   background-color: rgba(35, 35, 35, 0.3)
   min-height: 100%
+  width: 100%
 
 /* Next & previous buttons */
 
-.prev,
-.next 
+.slider__prev,
+.slider__next 
   cursor: pointer
   position: absolute
   top: 50%
@@ -266,27 +276,18 @@ body
   user-select: none
   z-index: 1
 
-
-
 /* Position the "next button" to the right */
-
-.next 
+.slider__next 
   right: 0
   border-radius: 3px 0 0 3px
-
-
 /* On hover, add a black background color with a little bit see-through */
 
-.prev:hover,
-.next:hover 
+.slider__prev:hover,
+.slider__next:hover 
   background-color: rgba(0, 0, 0, 0.8)
 
-
-.mySlides 
-  @include bg-setting(773px,100%)
-  background-size: cover
-  background-position: center center
-  background-repeat: no-repeat
+.slider__slides 
+  @include bg-setting(600px,100%)
 
 /* Caption text */
 
@@ -299,22 +300,9 @@ body
   width: 100%
   text-align: center
 
+/* The slider__dots/bullets/indicators */
 
-
-/* Number text (1/3 etc) */
-
-.numbertext 
-  color: #f2f2f2
-  font-size: 12px
-  padding: 8px 12px
-  position: absolute
-  top: 0
-
-
-
-/* The dots/bullets/indicators */
-
-.dots
+.slider__dots
   position: absolute
   bottom: 45px
   display: block
@@ -324,7 +312,7 @@ body
   list-style: none
   text-align: center
 
-.dot 
+.slider__dot 
   cursor: pointer
   height: 15px
   width: 15px
@@ -334,12 +322,9 @@ body
   display: inline-block
   transition: background-color 0.6s ease
 
-
 .active,
-.dot:hover 
+.slider__dot:hover 
   background-color: #717171
-
-
 
 /* Fading animation */
 
@@ -356,18 +341,15 @@ body
     
 // slider end
 
-
-@mixin text-rules($size-t,$color-t,$linh,$align)
+@mixin text-rules($size-t,$color-t,$lh,$align)
   font-size: $size-t
   color: $color-t
-  line-height: $linh
+  line-height: $lh
   text-align: $align
-
 
 .hero-content
   position: absolute
   width: 100%
-  min-height: 545px
   z-index: 1
   top: -1px
   text-align: center
@@ -375,7 +357,23 @@ body
 .hero-title
   @include text-rules(60px,rgb(255, 255, 255),1,center)
   text-transform: uppercase
-  margin-top: 155px
+  margin-top: 120px
+  position: absolute
+  z-index: 1
+  width: 100%
+  +r(800)
+    margin-top: 70px
+    font-size: 40px
+  +r(600)
+    margin-top: 80px
+    font-size: 30px
+
+.hero__btn
+  text-align: center
+  display: block
+  position: absolute
+  width: 100%
+  top: 420px
 
 @mixin regtangle($bgcolor)
   content: ""
@@ -392,7 +390,7 @@ body
   @include regtangle(white)
   margin: 30px auto 60px auto
 
-.main-button
+.button
   color: rgb(255, 255, 255)
   font-weight: bold
   text-transform: uppercase
@@ -403,17 +401,17 @@ body
   margin: 0 10px
   text-align: center
 
-@mixin button-setting($b-height,$b-linh,$b-pad)
+@mixin button-setting($b-height,$b-lh,$b-pad)
   height: $b-height
-  line-height: $b-linh
+  line-height: $b-lh
   padding: $b-pad
 
 .hero-button
   @include button-setting(72px,72px,0 50px)
 
-.main-button:hover
+.button:hover
   background-color: #ff935e
-  color: $text-color
+  color: $text-main
 
 @mixin half-elipse($width-elipse,$height-elipse)
   background: #fff
@@ -423,11 +421,11 @@ body
   display: inline-block
   z-index: 1
 
-.figure1
-  @include half-elipse(180px,40px)
+.elipse-top
+  @include half-elipse(180px,50px)
   transform: rotate(-180deg)
 
-.bottom-side
+.elipse-bottom
   width: 100%
   z-index: 1
   position: absolute
@@ -439,39 +437,33 @@ body
   font-size: 0px
   bottom: -2px
 
-.figure2
+.elips-big
   @include half-elipse(124px,42px)
   position: relative
   text-align: center
+  .icon-chevron-down
+    position: relative
+    bottom: -25px
 
-.symbol
-  position: absolute
-  font-size: 19px
-  bottom: -5px
-  left: 43%
-
-.section-welcome
+.welcome
   padding-bottom: 110px
 
-.row-title
+.title-block
   text-align: center
-  color: $text-color
+  color: $text-main
 
-.title-padding
-  padding-bottom: 100px
-
-.caption-section
-  color: $text-color
+.title-block__caption
+  color: $text-main
   text-transform: uppercase
   font-weight: bold
 
-.title-image
+.title-block__image
   @include bg-setting(97px,251px)
   display: inline-block
   position: relative
   z-index: 1
 
-.title-section
+.title-block__title
   @include text-rules(35px,rgb(67, 67, 67),1.2,center)
   font-weight: bold
   position: relative
@@ -479,105 +471,129 @@ body
   top: -55px
   margin: 0px
 
-.title-section::after
-  @include regtangle($text-color)
+.title-block__title::after
+  @include regtangle($text-main)
   margin: 38px auto 0px auto
 
 .container
   margin: 0 auto
   max-width: 1171px
 
-.welcome-col
-  @include three-col(6px 10px 63px 10px)
+.features
+  display: flex
+  +r(500)
+   display: block
 
-.welcome-img
+.feature
+  @include three-col(6px 10px 63px 10px)
+  +r(500)
+   width: 100%
+
+.feature__img
   @include bg-setting(473px,100%)
   position: relative
 
-.welcome-col-caption
+.feature-caption
   @include text-rules(45px,rgb(255, 255, 255),0.778,center)
   font-family: 'Yellowtail', cursive
+  align-items: center
+  justify-content: center
+  display: flex
 
-.vertical-align
-  padding-top: 210px
-
-.figure3
+.elips-small
   @include half-elipse(85px,33px)
   position: relative
-  .symbol
-    left: 0%
-    bottom: -15px
+  z-index: 2
+  text-align: center
+  .icon-chevron-down
     position: relative
+    left: 0%  
+    bottom: -15px
+    z-index: 1
 
 .welcome-button
   @include button-setting(60px,60px,0 60px)
 
-.row-button
+.button-center
   text-align: center
 
-// .section-about
-//   min-height: 1500px
-// 
+.section-about
+  // min-height: 1100px
 
 .about-banner
   @include bg-setting(695px,100%)
 
-.white-title
-  text-align: center
-  .caption-section
+.title-block_white
+  color: white
+  .title-block__caption,.title-block__title
     color: white
-    text-transform: uppercase
-
-  .title-section
-    color: white
-
-  .title-section:after
+  .title-block__title:after
     background: #fff
+  padding-top: 100px
 
 @mixin two-col($col-pad)
-  float: left
   width: 50%
   padding: $col-pad
 
-.about-padding
-  padding-top: 100px
-
-.about
+.inner-block
+  display: flex
   position: relative
   bottom: 300px
   padding-bottom: 100px
+  +r(400)
+    display: block
 
-.about-col
+.inner-block__col
   @include two-col(0px)
   box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.03)
+  +r(400)
+    width: 100%
 
-.about-img
+.inner-block__img
   @include bg-setting(538px,100%)
 
-.about-col-content
+.inner-block__content
   background: #fff
   min-height: 538px
   padding: 90px 84px 0px 84px
+  +r(1100)
+    padding: 1%
 
-.about-title
-  @include text-rules(22px,$text-color,1.5,left)
+
+.inner-block__title
+  @include text-rules(22px,$text-main,1.5,left)
   font-weight: bold
   padding-bottom: 23px
+  +r(1100)
+    padding: 10px 1%
+  +r(700)
+    padding: 0px 1%
+    font-size: 18px
+    text-align: center
 
-.about-text
+
+.inner-block__text
   @include text-rules(14px,rgb(146, 146, 146),1.714,left)
-  padding-bottom: 83px
+  padding: 23px
 
-.year
+
+.about-caption
   @include text-rules(28px,rgb(67, 67, 67),1.2,left)
   font-weight: bold
+  +r(700)
+    font-size: 18px
 
-.row-button-about
+.button-left
   text-align: left
 
 .about-button
   @include button-setting(60px,60px,0 0px)
   width: 60%
+  +r(750)
+    width: 90%
+    height: 40px
+    line-height: 40px;
+    font-size: 14px
 
 .section-menu
   @include bg-setting(1030px,100%)
@@ -593,7 +609,7 @@ body
 
 .menu-content
   background: #fff
-  @include text-rules(16px,$text-color,1,center)
+  @include text-rules(16px,$text-main,1,center)
   font-weight: bold
   position: relative
   min-height: 269px
@@ -608,7 +624,7 @@ body
 .figure4
   @include half-elipse(40px,15px)
   background: #f2f1ec
-  .symbol
+  .elipse-bottom__chevron
     left: 47%
     font-size: 16px
 
@@ -616,7 +632,7 @@ body
   padding-top: 20px
 
 .addition-text
-  @include text-rules(20px,$text-color,1,center)
+  @include text-rules(20px,$text-main,1,center)
   font-weight: bold
   padding: 34px 0 58px 0px
 

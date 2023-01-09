@@ -10,8 +10,8 @@ let slideIndex = 1;
 
 function showSlides(n) {
     let i;
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("dot");
+    const slides = document.getElementsByClassName("slider__slides");
+    const dots = document.getElementsByClassName("slider__dot");
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
     for (i = 0; i < slides.length; i++) {
